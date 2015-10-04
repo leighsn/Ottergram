@@ -1,0 +1,112 @@
+html {
+	height: 100%;
+}
+
+body {
+	display: flex;
+	height: 100%;
+	flex-direction: column;
+	background-color: red;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	list-style-type: none;
+}
+
+.thumbnails {
+	order: 2;
+	flex: 1;
+	display: inline-flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	overflow: auto;
+	background-color: rgba(100, 100, 100, 0.7);
+}
+
+.thumbnails li {
+	height: 120px;
+	width: 200px;
+	margin: .25em;
+	overflow: hidden;
+	position: relative;
+}
+
+
+.thumbnails li img {
+	width: 100%;
+}
+
+.title {
+	width: 100%;
+	height: 50px;
+	padding 15px 15px;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	background-color: rgba(255, 255, 255, 0.4);
+	color: rgba(0, 0, 0, 1);
+	text-shadow: rgba(0, 0, 0, 0.9) 0px 0px 5px;
+	transform: translateY(20px);
+	transition: all 333ms ease-in-out;
+}
+
+
+.thumbnails a.active .title,
+.thumbnails a:hover .title {
+	transform: translateY(0px);
+	height: 100%;
+}
+
+.detail {
+	order: 1;
+	flex: 1;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	background-color: rgba(50, 50, 50, 0.5);
+}
+
+.detail img {
+	width: 75%;
+}
+
+
+
+body.hide-detail .thumbnails {
+	flex-basis: 100%;
+}
+
+body.hide-detail .detail {
+	display: none;
+}
+
+@media (min-width: 640px) and (orientation: landscape){
+	body {
+		flex-direction: row;
+	}
+	body.hide-detail .thumbnails {
+		justify-content: flex-start;
+	}
+	.thumbnails {
+		flex-basis: 25%;
+	}
+	.detail {
+		order: 3;
+		flex-basis: 75%;
+	}
+}
+
+.shrink {
+	width: 0vw;
+}
+
+.expand {
+	width: 100vw;
+}
